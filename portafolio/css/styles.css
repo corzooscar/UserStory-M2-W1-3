@@ -1,0 +1,523 @@
+/*-------------------------------------------------
+    VARIABLES GLOBALES (Requisito 8)    
+---------------------------------------------------*/
+:root {
+    --bg-dark-transparent: rgba(15, 15, 15, 0.616);
+    --light-yellow: #F0D8A1;
+    --dark-yellow: #a78943;
+    --glow-yellow: #f3d99fba;   /* Resplandor para hacer juego */
+    --text-light: #f4f4f4;
+    --glow-light: rgba(244, 244, 244, 0.7); /* Resplandor blanco/suave */
+    --font-signature: "Sacramento", cursive;
+    --font-main: 'Roboto', sans-serif;
+}
+
+/* Reseteo básico para evitar márgenes indeseados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--light-yellow); /* Fondo temporal claro para contrastar el header */
+}
+
+/*-------------------------------------------------
+    HEADER CONFIG
+---------------------------------------------------*/
+/* Ajuste para que el Header flote sobre el Hero */
+.headorfoot-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-dark-transparent); /* Más transparente*/
+    padding: 1rem 3rem; /* Espaciado interno */
+    position: fixed;   /* En lugar de absolute */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;    /* Mantiene el header por encima de todas las capas del hero */
+    backdrop-filter: blur(10px); /* Le da un toque extra al fondo transparente */
+    transition: background-color 0.3s ease; /* Para un efecto luego */
+}
+
+/* Actualizamos el H1 para darle el efecto Glow */
+.headorfoot-content h1 {
+    font-family: var(--font-signature);
+    color: var(--text-light);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    /* Aquí ocurre la magia del glow: múltiples sombras difuminadas */
+    text-shadow: 0 0 5px var(--glow-light), 0 0 15px var(--glow-light); 
+}
+
+.nav-config {
+    display: flex;
+    gap: 2rem;
+    list-style: none; /* Quita los puntos/números de la lista */
+}
+
+.link a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Transición suave para el hover */
+}
+
+/* Actualizamos el hover de los enlaces para que también brillen */
+.link a:hover {
+    color: var(--dark-yellow);
+    text-shadow: 0 0 8px var(--glow-yellow), 0 0 20px var(--glow-yellow);
+}
+
+/*-------------------------------------------------
+    SECCIÓN HERO (SOBRE MÍ)
+---------------------------------------------------*/
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la pantalla inicial */
+    overflow: hidden; /* Evita que las imágenes se salgan de la sección */
+    border-bottom: 5px ridge #6e5034;
+}
+
+/* Requisito 7: Imágenes responsivas */
+.hero-section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Capa -1: Fondo */
+.hero-bg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ajustamos el tamaño para que se vea como en tu diseño */
+    height: 100%;
+     /* Ajusta según qué tan oscuro quieras el fondo */
+    filter: grayscale(5%); /* Opcional: para que no distraiga del texto */
+}
+
+/*-------------------------------------------------
+    Capa 2: Botón, texto y foto oculta
+---------------------------------------------------*/
+/* Envolvemos el texto y el botón para agruparlos */
+.hero-content-wrapper {
+    position: absolute;
+    z-index: 4;
+    margin-top: 35%;
+    margin-left: 60%;
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.hero-text {
+    position: relative; /* Le quitamos el absolute porque ahora el padre lo tiene */
+    margin: 0;
+    width: 100%;
+}
+
+.btn-pic {
+    width: auto;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+}
+
+/* Ocultamos la foto por defecto con una transición suave */
+.hero-char {
+    position: absolute;
+    z-index: 2;
+    margin-top: 10%;
+    left: 60%; /* Ajustado un poco para que no choque con el texto */
+    width: 30%; 
+    object-fit: contain;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Esta clase se añadirá con JavaScript */
+.hero-char.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 4;
+    margin: 0; /* Lo colocamos a la derecha*/
+    width: 100%;
+    font-family: "Special Elite", system-ui;
+    color: var(--text-light);
+    background-color: rgba(0, 0, 0, 0.425); /* Cuadro oscuro semi-transparente */
+    padding: 1.5rem;
+    /* border: 4px solid var(--text-hover); */
+    border-radius: 10%;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Capa 3: Título */
+.hero-title {
+    position: absolute;
+    z-index: 3;
+    margin-top: 37%;
+    margin-left: 3%;
+    font-family: "Sacramento", cursive;
+    font-size: 10rem; /* Tamaño grande y visual */
+    color: var(--text-light);
+    text-shadow: 0 0 10px var(--glow-light);
+}
+
+
+
+
+/*-------------------------------------------------
+    SECCIÓN PROYECTOS (GRID & GALLERY)
+---------------------------------------------------*/
+.projects-section {
+    padding: 50px 0;
+    background-color: rgba(20, 20, 20, 0.95); /* Color oscuro que combina con el Hero */
+    border-bottom: 5px ridge #6e5034;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-signature);
+    color: var(--text-light);
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px var(--glow-light);
+}
+
+.projects-container {
+    width: 60%; /* Requisito del usuario */
+    margin: 0 auto;
+}
+
+.projects-grid {
+    display: grid;
+    /* Crea columnas automáticas que se adaptan al espacio */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    list-style: none;
+}
+
+/* Tarjeta de Proyecto */
+.project-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 8px;
+}
+
+/* El "Marco de Cuadro" */
+.project-frame {
+    border: 8px ridge #6e5034; /* Efecto marco de galería */
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: #000;
+}
+
+.project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: grayscale(30%);
+}
+
+/* Animación al pasar el cursor */
+.project-card:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.project-info h3 {
+    display: flex;
+    justify-content: center;
+    color: var(--dark-yellow);
+    text-decoration: none;
+    font-family: var(--font-main);
+}
+
+.project-info p {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+/*-------------------------------------------------
+    SECCIÓN CONTACTO (LATERAL SOBRE IMAGEN)
+---------------------------------------------------*/
+.contact-section {
+    position: relative;
+    height: 80vh;
+    background-image: url(../imgs/HeroBack2.gif); /* Tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto parallax */
+}
+
+.contact-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Oscurece la imagen de fondo */
+    display: flex;
+    align-items: center;
+}
+
+.contact-block {
+    width: 450px;
+    margin-left: 10%; /* Posiciona el bloque a la izquierda */
+    background-color: var(--bg-dark-transparent);
+    padding: 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: var(--text-hover);
+}
+
+.btn-send {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--dark-yellow);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-send:hover {
+    background-color: var(--light-yellow);
+    box-shadow: 0 0 15px var(--glow-yellow);
+}
+
+/*-------------------------------------------------
+    FOOTER (EL CIERRE DE GALA)
+---------------------------------------------------*/
+.main-footer {
+    background-color: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(15px);
+    border-top: 5px ridge #6e5034; /* Un toque del verde que usamos */
+    padding: 60px 0 30px 0;
+    color: var(--text-light);
+}
+
+.footer-container {
+    margin: auto 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Marca en el Footer */
+.footer-logo {
+    font-family: var(--font-signature);
+    font-size: 2rem;
+    text-shadow: 0 0 8px var(--glow-light);
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    font-size: 0.85rem;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+/* Redes Sociales */
+.footer-social h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+    border-bottom: 1px solid transparent;
+}
+
+.social-icon:hover {
+    color: var(--text-hover);
+    border-bottom: 1px solid var(--text-hover);
+    text-shadow: 0 0 10px var(--glow-hover);
+}
+
+/* Copyright y Botón arriba */
+.footer-copy {
+    text-align: right;
+}
+
+.footer-copy p {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.back-to-top {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+}
+
+/*-------------------------------------------------
+    MEDIA QUERIES (Responsividad General)
+---------------------------------------------------*/
+
+/* Pantallas medianas (Tablets) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 7rem; /* Reducimos un poco el título gigante */
+        margin-top: 40%;
+    }
+    .hero-text {
+        margin-left: 50%;
+        width: 45%; /* Usamos porcentaje en vez de rem fijos */
+    }
+}
+
+/* Pantallas pequeñas (Móviles - hasta 768px) */
+@media (max-width: 768px) {
+    .headorfoot-content {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 15px;
+        position: relative; /* Evita que el menú tape el contenido inicial en móvil */
+    }
+    
+    .nav-config {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    /* Cambiamos el Hero a Flexbox para apilar los elementos en móvil */
+    .hero-section {
+        height: auto; /* Que crezca según el contenido */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 80px; /* Espacio para el header fixed */
+        padding-bottom: 40px;
+        overflow: visible;
+    }
+
+    .hero-title {
+        position: relative;
+        margin: 20px 0 !important; /* Forzamos el reset del margen */
+        font-size: 4rem; /* Un poco más pequeño para que quepa en el cel */
+        text-align: center;
+        width: 100%;
+        left: 0;
+    }
+
+    .hero-content-wrapper {
+    position: relative;
+        margin: 20px auto;
+        width: 90%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        order: 3;
+    }
+
+    .hero-text {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .hero-char {
+        position: relative; /* Deja de flotar sobre el texto */
+        left: 0;
+        margin: 20px auto;
+        width: 70%; /* Tamaño controlable en móvil */
+        order: 2; /* Podemos elegir en qué orden aparece */
+    }
+
+    .contact-block {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .footer-copy {
+        text-align: center;
+    }
+}

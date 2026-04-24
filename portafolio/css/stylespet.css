@@ -1,0 +1,351 @@
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bWs3M243YWhic3dla2NsenRoZDVtMTcwanV6eGhtY2NzNHhqajB2eSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/bDfDIdW7SyNPdMNFzi/giphy.gif);
+    background-size: 15%;
+}
+
+/*-------------------------------------------------
+    HEADER CONFIG
+---------------------------------------------------*/
+.headorfoot-content{
+    border-bottom: 10px dashed #6e5034;
+    background: #cdb885;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    font-family: "Sour Gummy", sans-serif;
+    
+}
+
+.nav-config {
+    display: flex;
+    gap: 2rem;
+
+}
+
+.link {
+    list-style: none;
+}
+
+a:link {
+    display: flex;
+    align-items: center;
+    color: #6E5034;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: #55381d;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------
+    HERO CONFIG
+---------------------------------------------------*/
+.contenedor-img1 {
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    margin: 35px auto;
+    border-radius: 14px;
+    border: 10px dashed #6e5034;
+}
+
+.contenedor-img1 ul {
+    display: flex;
+    width: 300%;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+    animation: cambio 10s infinite alternate ease;
+}
+
+.contenedor-img1 li {
+    list-style: none;
+    width: 34%;
+    height: 100%;
+}
+
+.contenedor-img1 img {
+    width: 100%;
+    height: 900px;
+    object-fit: cover;
+    display: block;
+}
+
+.Texto-superpuesto{
+    color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    font-family: "Cherry Bomb One", system-ui;
+}
+.Texto-superpuesto:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+.Texto-superpuesto h2{
+    text-align: center;
+}
+.Texto-superpuesto p{
+    text-align: center;
+}
+@keyframes cambio {
+    0% { margin-left: 0%; }
+    30% { margin-left: 0%; }
+
+    35% { margin-left: -100%; }
+    65% { margin-left: -100%; }
+
+    70% { margin-left: -200%; }
+    100% { margin-left: -200%; }
+}
+
+
+
+/* =========================================
+   1. LAYOUT MACRO (El Grid para la página)
+   ========================================= */
+body {
+    background-color: #f0f8ff; /* Un fondo azul muy claro */
+    font-family:cursive;
+
+}
+
+.grid-tarjetas {
+    display: grid;
+    /* Esto crea tantas columnas como quepan, de mínimo 320px cada una */
+    grid-template-columns: repeat(3, minmax(320px, 1fr));
+    gap: 80px 40px; /* Aumentamos el espacio vertical (80px) por los stickers que sobresalen */
+    padding: 50px;
+    justify-content: center; 
+    justify-items: center;
+    max-width: 75%;
+    margin: 35px auto;
+    border: 10px dashed #6e5034;
+    border-radius: 14px;
+    background: #cdb785da;
+
+}
+
+/* =========================================
+   2. LA TARJETA (El lienzo relativo)
+   ========================================= */
+.tarjeta {
+    /* CRÍTICO: Esto convierte a la tarjeta en el punto de referencia 
+       para todo lo que tenga position: absolute dentro de ella */
+    position: relative; 
+    
+    background-color: white;
+    border: 6px solid black;
+    border-radius: 12px;
+    width: 300px;
+    height: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* El cuadro de la foto principal */
+.foto-principal {
+    width: 100%;
+    height: 200px;
+    border: 4px solid black;
+    background-color: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.placeholder-imagen img {
+    width: 100%;
+   
+    aspect-ratio: 1; 
+    object-fit: cover;
+}
+
+/* =========================================
+   3. DECORACIONES (Los elementos absolutos)
+   ========================================= */
+.decoracion {
+    position: absolute;
+    z-index: 10; /* Asegura que floten sobre el contenido normal */
+}
+
+/* Sticker en la esquina superior izquierda */
+.sticker-sup-izq {
+    top: -40px;   /* Valores negativos lo sacan fuera del borde de la tarjeta */
+    left: -40px;
+    transform: rotate(-15deg); /* Le da ese toque orgánico/desordenado */
+    z-index: 20;
+}
+
+.sticker-sup-izq img {
+    width: 35%;
+}
+
+/* Nota amarilla en la parte inferior central */
+.nota-inf-centro {
+    bottom: -30px;
+    left: 50%;
+    /* translateX(-50%) lo centra perfectamente. Luego lo rotamos un poco */
+    transform: translateX(-50%) rotate(3deg); 
+    
+    background-color: #ffeba1;
+    padding: 10px 20px;
+    border: 2px solid black;
+    width: 80%;
+    text-align: center;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.nota-inf-centro h3, .nota-inf-centro p {
+    margin: 5px 0;
+    font-family: "Sour Gummy", sans-serif; /* Toque informal */
+}
+
+/* =========================================
+   4. LAS CINTAS / TAPE (Detalles finales)
+   ========================================= */
+.cinta {
+    position: absolute;
+    background-color: rgba(135, 206, 235, 0.6); /* Azul cielo semitransparente simulando cinta */
+    width: 60px;
+    height: 20px;
+    z-index: 15;
+}
+
+/* Cinta principal arriba a la derecha */
+.cinta-sup-der {
+    top: 20px;
+    right: 10px;
+    transform: rotate(45deg);
+}
+
+/* Cintas pequeñas para sostener la nota amarilla */
+.cinta-nota-izq {
+    width: 40px;
+    height: 15px;
+    top: -8px;
+    left: -10px;
+    transform: rotate(-30deg);
+}
+
+.cinta-nota-der {
+    width: 40px;
+    height: 15px;
+    top: -5px;
+    right: -10px;
+    transform: rotate(20deg);
+}
+
+/*-------------------------------------------------
+    MEDIA QUERIES - RESPONSIVIDAD MASCOTAS
+---------------------------------------------------*/
+
+/* 1. Pantallas Medianas (Tablets) */
+@media (max-width: 1024px) {
+    .grid-tarjetas {
+        grid-template-columns: repeat(2, 1fr); /* Pasamos a 2 columnas */
+        max-width: 90%; /* Le damos más espacio a los lados */
+        gap: 60px 20px;
+    }
+
+    .contenedor-img1 ul {
+        height: 400px; /* Reducimos la altura del slider */
+    }
+
+    .contenedor-img1 img {
+        height: 400px;
+    }
+}
+
+/* 2. Pantallas Pequeñas (Celulares) */
+@media (max-width: 768px) {
+    /* Header: Apilamos los elementos */
+    .headorfoot-content {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+        gap: 10px;
+    }
+
+    /* Slider: Ajuste para móviles */
+    .contenedor-img1 {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .contenedor-img1 ul {
+        height: 250px; /* Mucho más pequeño para que no estorbe */
+    }
+
+    .contenedor-img1 img {
+        height: 250px;
+    }
+
+    .Texto-superpuesto h2 {
+        font-size: 1.2rem;
+    }
+    
+    .Texto-superpuesto p {
+        font-size: 0.8rem;
+        display: none; /* Opcional: ocultar el texto japonés en móviles para limpiar la vista */
+    }
+
+    /* Grid de Tarjetas: Una sola columna */
+    .grid-tarjetas {
+        grid-template-columns: 1fr; /* Una sola columna */
+        max-width: 95%;
+        padding: 40px 10px;
+        gap: 80px 0; /* Espacio vertical para que los stickers no choquen */
+    }
+
+    .tarjeta {
+        width: 280px; /* Ajustamos un poco el ancho para celus pequeños */
+        margin: 0 auto;
+    }
+
+    /* Ajuste de los stickers que sobresalen mucho */
+    .sticker-sup-izq {
+        left: -20px;
+        top: -30px;
+    }
+}
+
+/* 3. Ajuste extra para móviles muy pequeños */
+@media (max-width: 400px) {
+    .tarjeta {
+        width: 90%; /* Que ocupe casi todo el ancho disponible */
+    }
+    
+    .nota-inf-centro {
+        width: 95%;
+        font-size: 0.9rem;
+    }
+}

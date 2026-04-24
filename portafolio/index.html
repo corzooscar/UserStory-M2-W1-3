@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Portafolio - Oscar Corzo</title>
+</head>
+
+<body>
+<!-- SECTION 1 - Header -->
+    <header class="headorfoot-content">
+        <h1>Oscar A. Corzo L.</h1>
+        <nav>
+            <ul class="nav-config">
+                <li class="link"><a href="mascotas.html">My Pets</a></li>
+                <li class="link"><a href="#sobre-mi">About Me</a></li>
+                <li class="link"><a href="#proyectos">Projects</a></li>
+                <li class="link"><a href="#contacto">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- SECTION 2 - About me -->
+    <section id="sobre-mi" class="hero-section">
+        <img src="imgs/HeroBack3.gif" class="hero-bg" alt="fondo">
+
+        <img src="imgs/OscarC.jpeg" class="hero-char" alt="Oscar">
+
+        <h2 class="hero-title">About Me...</h2>
+
+        <div class="hero-content-wrapper">
+            <p class="hero-text"></p>
+            <button id="btn-toggle-pic" class="btn-send btn-pic">Show Picture</button>
+        </div>
+
+    </section>
+<!-- SECTION 3 - Projects Gallery -->
+    <section id="proyectos" class="projects-section">
+        <h2 class="section-title">Projects Gallery</h2>
+        <div class="projects-container">
+            <ul class="projects-grid">
+                <li class="project-card">
+                    <div class="project-frame">
+                        <img src="Recursos/PetsPage.png" alt="Vista previa proyecto" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3>My Pets</h3>
+                        <p>A webpage designed in a funny way, where i show some of the pets that i've had during my life in a goofy way (It was funny to make lol).</p>
+                    </div>
+                </li>
+                <li class="project-card">
+                    <div class="project-frame">
+                        <img src="Recursos/CheckpointPage.png" alt="Vista previa proyecto" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3>First Checkpoint</h3>
+                        <p>A webpage designed with a pixel-art and dark fantasy style, mixing different components from RPG and Souls games.</p>
+                    </div>
+                </li>
+                <li class="project-card">
+                    <div class="project-frame">
+                        <img src="Recursos/Nothing.webp" alt="Vista previa proyecto" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3>PENDING</h3>
+                        <p>-----   -----------------  - -------- --- ----------- -------------------- ------ ---- ------- ------  -------------- -----------</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+<!-- SECTION 4 - Contact -->
+    <section id="contacto" class="contact-section">
+        <div class="contact-overlay">
+            <div class="contact-block">
+                <h2 class="section-title">Contacto</h2>
+                <form id="contact-form">
+                    <div class="input-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre..." required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5"
+                            placeholder="Cuéntame sobre tu idea..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-send">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+<!-- SECTION 5 (Additional)- Footer -->
+    <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h2 class="footer-logo">Oscar A. Corzo L.</h2>
+            <p>Software Developer in training.</p>
+        </div>
+
+        <div class="footer-social">
+            <h3>Connections</h3>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/" class="social-icon">LinkedIn</a>
+                <a href="https://www.github.com/corzooscar" class="social-icon">GitHub</a>
+                <a href="https://www.instagram.com/nthng.rlly.mttrs/" class="social-icon">Instagram</a>
+            </div>
+        </div>
+
+        <div class="footer-copy">
+            <p>&copy; 2026 Oscar Corzo. <br> "To God be the glory" — Barranquilla.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
